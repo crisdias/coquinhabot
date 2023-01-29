@@ -1,4 +1,4 @@
-# Amazon Affiliate Bot
+# Discord Amazon Affiliate Bot
 
 A Discord bot that monitors Amazon links and adds an affiliate link.
 
@@ -26,4 +26,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-This project was generated using OpenAI's ChatGPT language model.
+This project was generated with a little help from OpenAI's ChatGPT language model. (including but not limited to this README)
