@@ -4,7 +4,7 @@ A Discord bot that monitors Amazon links and adds an affiliate link.
 
 ## Installation
 
-1. Clone this repository to your local machine using `git clone https://github.com/<repository_name>.git`
+1. Clone this repository to your local machine using `git clone https://github.com/crisdias/coquinhabot.git`
 2. Install required packages using `pip install -r requirements.txt`
 3. Create a Discord bot and invite it to your server by following the [Discord Developer Portal guide](https://discord.com/developers/docs/intro).
 4. Set the following environment variables:
