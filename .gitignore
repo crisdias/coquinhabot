@@ -1,0 +1,8 @@
+# created by virtualenv automatically
+.env
+bin
+lib
+pyvenv.cfg
+__pycache__
+docker-compose.yml
+venv
