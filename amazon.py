@@ -1,6 +1,6 @@
 # https://webservices.amazon.com/paapi5/documentation/assets/archives/paapi5-python-sdk-example.zip
 
-# from amazon_paapi import AmazonApi
+from amazon_paapi import AmazonApi
 from dotenv       import load_dotenv
 from utils        import pp
 
@@ -10,24 +10,31 @@ import os
 load_dotenv()
 
 TAG     = os.environ['AMAZON_TAG']
+KEY     = os.environ['AMAZON_KEY']
+SECRET  = os.environ['AMAZON_SECRET']
+COUNTRY = os.environ['AMAZON_COUNTRY']
+
+amazon = AmazonApi(KEY, SECRET, TAG, COUNTRY)
+
+def get_item(asin):
+  return amazon.get_items(asin)
 
 
-# def amazon_search(search):
-#   amazon = AmazonApi(KEY, SECRET, TAG, COUNTRY)
+def amazon_search(search):
 
-#   try:
-#     busca = amazon.search_items(keywords=search, search_index='Books')
-#   except Exception as e:
-#     if str(type(e)) == "<class 'amazon_paapi.errors.exceptions.ItemsNotFound'>":
-#       print('Items not found')
-#       return 0
-#     else:
-#       print('Error: ' + str(e))
-#       return 0
+  try:
+    busca = amazon.search_items(keywords=search, search_index='Books')
+  except Exception as e:
+    if str(type(e)) == "<class 'amazon_paapi.errors.exceptions.ItemsNotFound'>":
+      print('Items not found')
+      return 0
+    else:
+      print('Error: ' + str(e))
+      return 0
 
-#   # dump item
-#   dict = busca.to_dict()
-#   return dict['items']
+  # dump item
+  dict = busca.to_dict()
+  return dict['items']
 
 
 def get_asin_from_link(link):

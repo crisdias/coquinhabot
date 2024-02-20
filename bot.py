@@ -5,7 +5,7 @@ import discord
 from dotenv import load_dotenv
 import os
 
-from amazon import get_asin_from_link, extract_amazon_url, amazon_tagger, add_affiliate_tag_to_product
+from amazon import get_asin_from_link, extract_amazon_url, amazon_tagger, add_affiliate_tag_to_product, get_item
 from bitly  import bitly_shorten
 from utils  import pp
 
@@ -34,6 +34,9 @@ async def on_message(message):
     if message.author == client.user:
         return 1
 
+    if message.author.name.startswith('crisdias'):
+        return 1
+
     amznurl = extract_amazon_url(message.content)
     if amznurl:
         asin = get_asin_from_link(amznurl)
@@ -41,7 +44,7 @@ async def on_message(message):
             url = add_affiliate_tag_to_product(asin)
         else:
             url = amazon_tagger(amznurl)
-        
+
         shorturl = bitly_shorten(url)
 
 
@@ -52,7 +55,7 @@ async def on_message(message):
 
         frase = frases[random.randint(0, len(frases)-1)]
 
-        await message.channel.send(frase + "\n\n" + shorturl)
+        await message.channel.send(frase + "\n" + shorturl)
 
         await message.edit(suppress=True)
 
@@ -60,7 +63,7 @@ async def on_message(message):
 
 
 
-    
+
 
 
 
@@ -73,6 +76,6 @@ async def on_ready():
     print(f'\n\n\n\n\n\n\nWe have logged in as {client.user}')
     print(datetime.datetime.now())
     print('\n\n\n\n\n\n\n')
-    
+
 client.run(TOKEN)
 

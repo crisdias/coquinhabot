@@ -1,9 +1,12 @@
 import json
 import os
 from datetime import datetime, timedelta
+import pprint
 
-def pp(data):
-    print(json.dumps(data, indent=4))
+def pp(var, name=None):
+    if name:
+        print(f"{{ {name} }}:")
+    pprint.pprint(var)
 
 def array_from_file(path):
     if os.path.exists(path):
